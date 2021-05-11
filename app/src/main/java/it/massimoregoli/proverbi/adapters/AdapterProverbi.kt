@@ -46,7 +46,7 @@ class AdapterProverbi(val model: ProverbiVM): RecyclerView.Adapter<AdapterProver
             proverbi[position].preferito = if (proverbi[position].preferito == 1) 0 else 1
             Log.w(MainActivity.TAG, "BINGO!" + proverbi[position].id)
             model.update(proverbi[position])
-            notifyItemChanged(position)
+            notifyDataSetChanged()
         }
     }
 

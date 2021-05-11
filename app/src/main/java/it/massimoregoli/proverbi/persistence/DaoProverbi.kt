@@ -26,13 +26,13 @@ interface DaoProverbi {
     fun loadAll(): LiveData<List<Proverbi>>
 
     @Query("SELECT * FROM Proverbi WHERE testo LIKE :search")
-    fun loadAllByTag(search: String): List<Proverbi>
+    fun loadAllByTag(search: String): MutableList<Proverbi>
 
     @Query("SELECT * FROM Proverbi WHERE preferito = :pref")
-    fun loadAllByPreference(pref: Int) : LiveData<List<Proverbi>>
+    fun loadAllByPreference(pref: Int) : LiveData<MutableList<Proverbi>>
 
     @Query("SELECT * FROM Proverbi WHERE lingua = :lang")
-    fun loadAllByLanguage(lang: String) : List<Proverbi>
+    fun loadAllByLanguage(lang: String) : MutableList<Proverbi>
 
     @Query("SELECT count(*) FROM Proverbi")
     fun records(): Int

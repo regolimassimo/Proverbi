@@ -1,13 +1,19 @@
 package it.massimoregoli.proverbi
 
 import android.content.Context
-import androidx.appcompat.app.AppCompatActivity
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.SearchView
+import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.view.ActionMode
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import it.massimoregoli.interfaces.SelectMode
 import it.massimoregoli.proverbi.ViewModel.ProverbiVM
 import it.massimoregoli.proverbi.adapters.AdapterProverbi
 import it.massimoregoli.proverbi.databinding.ActivityMainBinding
@@ -33,10 +39,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setLiveData() {
-        val observer = Observer<List<Proverbi>> {list ->
+        val observer = Observer<List<Proverbi>> { list ->
             if (list != null) {
                 Log.w(TAG, "SIZE= " + list.size)
                 adapter = AdapterProverbi(model)
+                binding.rvProverbi.setBackgroundColor(Color.RED)
                 binding.rvProverbi.adapter = adapter
             }
         }
@@ -88,4 +95,6 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
+
+
 }
